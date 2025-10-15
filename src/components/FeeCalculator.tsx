@@ -46,7 +46,7 @@ const hostel = [
 
 function PremiumTable({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="border border-gray-200 shadow-sm overflow-hidden bg-gradient-to-br from-white via-yellow-50/40 to-white">
+    <Card className="border border-amber-200 shadow-soft overflow-hidden bg-gradient-to-br from-white via-yellow-50/30 to-white">
       <div className="overflow-x-auto">
         {children}
       </div>
@@ -64,7 +64,7 @@ export const FeeCalculator = () => {
         </div>
 
         <Tabs defaultValue="matrix" className="max-w-6xl mx-auto">
-          <TabsList className="grid grid-cols-5 bg-white/80 backdrop-blur border border-gray-200" data-reveal-item>
+          <TabsList className="grid grid-cols-5 bg-white/80 backdrop-blur border border-amber-200" data-reveal-item>
             <TabsTrigger value="matrix">Seat Matrix</TabsTrigger>
             <TabsTrigger value="cq">Convener</TabsTrigger>
             <TabsTrigger value="s1">S1</TabsTrigger>
@@ -76,21 +76,21 @@ export const FeeCalculator = () => {
             <PremiumTable data-reveal-item>
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-gray-50/80">
+                  <TableRow className="bg-amber-50/80">
                     <TableHead className="w-24">Sl. No.</TableHead>
                     <TableHead>Category</TableHead>
                     <TableHead className="text-right">Postgraduate (MD/MS)</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {seatMatrix.map((r) => (
-                    <TableRow key={String(r.sn)}>
+                  {seatMatrix.map((r, i) => (
+                    <TableRow key={String(r.sn)} className={`${i % 2 === 1 ? 'bg-amber-50/30' : ''}`}>
                       <TableCell>{r.sn}</TableCell>
                       <TableCell className="font-medium text-gray-900">{r.category}</TableCell>
                       <TableCell className="text-right font-semibold">{r.seats}</TableCell>
                     </TableRow>
                   ))}
-                  <TableRow className="bg-yellow-50/60">
+                  <TableRow className="bg-amber-100/70">
                     <TableCell className="font-semibold">Total</TableCell>
                     <TableCell />
                     <TableCell className="text-right font-bold">160</TableCell>
@@ -104,7 +104,7 @@ export const FeeCalculator = () => {
             <PremiumTable data-reveal-item>
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-gray-50/80">
+                  <TableRow className="bg-amber-50/80">
                     <TableHead>Sr.No</TableHead>
                     <TableHead>Particulars</TableHead>
                     <TableHead className="text-right">Pre Clinical</TableHead>
@@ -114,8 +114,8 @@ export const FeeCalculator = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {cq.map((r) => (
-                    <TableRow key={r.sn}>
+                  {cq.map((r, i) => (
+                    <TableRow key={r.sn} className={`${i % 2 === 1 ? 'bg-amber-50/30' : ''}`}>
                       <TableCell>{r.sn}</TableCell>
                       <TableCell className="font-medium text-gray-900">{r.part}</TableCell>
                       <TableCell className="text-right">{r.pre}</TableCell>
@@ -124,7 +124,7 @@ export const FeeCalculator = () => {
                       <TableCell>{r.remark}</TableCell>
                     </TableRow>
                   ))}
-                  <TableRow className="bg-yellow-50/60">
+                  <TableRow className="bg-amber-100/70">
                     <TableCell className="font-semibold" colSpan={2}>Total Fee :</TableCell>
                     <TableCell className="text-right font-semibold">{cqTotals.pre}</TableCell>
                     <TableCell className="text-right font-semibold">{cqTotals.para}</TableCell>
@@ -140,7 +140,7 @@ export const FeeCalculator = () => {
             <PremiumTable data-reveal-item>
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-gray-50/80">
+                  <TableRow className="bg-amber-50/80">
                     <TableHead>Sr.No</TableHead>
                     <TableHead>Particulars</TableHead>
                     <TableHead className="text-right">Pre Clinical</TableHead>
@@ -150,8 +150,8 @@ export const FeeCalculator = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {s1.map((r) => (
-                    <TableRow key={r.sn}>
+                  {s1.map((r, i) => (
+                    <TableRow key={r.sn} className={`${i % 2 === 1 ? 'bg-amber-50/30' : ''}`}>
                       <TableCell>{r.sn}</TableCell>
                       <TableCell className="font-medium text-gray-900">{r.part}</TableCell>
                       <TableCell className="text-right">{r.pre}</TableCell>
@@ -160,7 +160,7 @@ export const FeeCalculator = () => {
                       <TableCell>{r.remark}</TableCell>
                     </TableRow>
                   ))}
-                  <TableRow className="bg-yellow-50/60">
+                  <TableRow className="bg-amber-100/70">
                     <TableCell className="font-semibold" colSpan={2}>Total Fee :</TableCell>
                     <TableCell className="text-right font-semibold">{s1Totals.pre}</TableCell>
                     <TableCell className="text-right font-semibold">{s1Totals.para}</TableCell>
@@ -176,7 +176,7 @@ export const FeeCalculator = () => {
             <PremiumTable data-reveal-item>
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-gray-50/80">
+                  <TableRow className="bg-amber-50/80">
                     <TableHead>Sr.No</TableHead>
                     <TableHead>Particulars</TableHead>
                     <TableHead className="text-right">Pre Clinical</TableHead>
@@ -186,8 +186,8 @@ export const FeeCalculator = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {s2.map((r) => (
-                    <TableRow key={r.sn}>
+                  {s2.map((r, i) => (
+                    <TableRow key={r.sn} className={`${i % 2 === 1 ? 'bg-amber-50/30' : ''}`}>
                       <TableCell>{r.sn}</TableCell>
                       <TableCell className="font-medium text-gray-900">{r.part}</TableCell>
                       <TableCell className="text-right">{r.pre}</TableCell>
@@ -196,7 +196,7 @@ export const FeeCalculator = () => {
                       <TableCell>{r.remark}</TableCell>
                     </TableRow>
                   ))}
-                  <TableRow className="bg-yellow-50/60">
+                  <TableRow className="bg-amber-100/70">
                     <TableCell className="font-semibold" colSpan={2}>Total Fee :</TableCell>
                     <TableCell className="text-right font-semibold">{s2Totals.pre}</TableCell>
                     <TableCell className="text-right font-semibold">{s2Totals.para}</TableCell>
@@ -212,7 +212,7 @@ export const FeeCalculator = () => {
             <PremiumTable>
               <Table>
                 <TableHeader>
-                  <TableRow className="bg-gray-50/80">
+                  <TableRow className="bg-amber-50/80">
                     <TableHead>Sl. No.</TableHead>
                     <TableHead>Name of the Residence</TableHead>
                     <TableHead>Occupancy</TableHead>
@@ -220,8 +220,8 @@ export const FeeCalculator = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {hostel.map((r) => (
-                    <TableRow key={String(r.sn)}>
+                  {hostel.map((r, i) => (
+                    <TableRow key={String(r.sn)} className={`${i % 2 === 1 ? 'bg-amber-50/30' : ''}`}>
                       <TableCell>{r.sn}</TableCell>
                       <TableCell className="font-medium text-gray-900">{r.name}</TableCell>
                       <TableCell>{r.occ}</TableCell>
