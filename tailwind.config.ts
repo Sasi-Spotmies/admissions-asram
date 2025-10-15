@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         poppins: ['Poppins', 'sans-serif'],
+        display: ['Poppins', 'Inter', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -27,6 +28,7 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
           light: "hsl(var(--primary-light))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -44,7 +46,7 @@ export default {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
-          gold: "hsl(var(--accent-gold))",
+          glow: "hsl(var(--accent-glow))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -141,6 +143,11 @@ export default {
       boxShadow: {
         'soft': 'var(--shadow-soft)',
         'elegant': 'var(--shadow-elegant)',
+        'glow': 'var(--shadow-glow)',
+        'glass': 'var(--shadow-glass)',
+      },
+      backdropBlur: {
+        xs: '2px',
       },
     },
   },

@@ -8,52 +8,57 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Premium Medical Serenity Theme */
-    --background: 35 20% 98%;
-    --foreground: 220 15% 25%;
+    /* Neo-Futuristic Light Mode - 2050 Design System */
+    --background: 210 20% 98%;
+    --foreground: 220 15% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 25%;
+    --card-foreground: 220 15% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 25%;
+    --popover-foreground: 220 15% 20%;
 
-    /* Ice Blue Primary */
-    --primary: 195 65% 55%;
+    /* Holographic Blue Primary */
+    --primary: 200 95% 65%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 195 55% 85%;
+    --primary-light: 200 85% 88%;
+    --primary-glow: 200 95% 75%;
     
-    /* Sage Green Secondary */
-    --secondary: 150 25% 65%;
+    /* Aqua Silver Secondary */
+    --secondary: 180 45% 70%;
     --secondary-foreground: 0 0% 100%;
-    --secondary-light: 150 20% 90%;
+    --secondary-light: 180 35% 92%;
 
-    /* Muted Gold Accent */
-    --accent: 45 60% 75%;
-    --accent-foreground: 220 15% 25%;
-    --accent-gold: 42 78% 65%;
+    /* Iridescent Accent */
+    --accent: 270 60% 75%;
+    --accent-foreground: 220 15% 20%;
+    --accent-glow: 270 80% 85%;
 
-    --muted: 210 20% 95%;
-    --muted-foreground: 220 10% 50%;
+    --muted: 210 25% 96%;
+    --muted-foreground: 220 10% 55%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 15% 88%;
-    --input: 210 15% 92%;
-    --ring: 195 65% 55%;
+    --border: 210 20% 90%;
+    --input: 210 20% 94%;
+    --ring: 200 95% 65%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(195 65% 55%) 0%, hsl(195 55% 70%) 100%);
-    --gradient-secondary: linear-gradient(135deg, hsl(150 25% 65%) 0%, hsl(150 20% 80%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(195 55% 92%) 0%, hsl(150 20% 95%) 100%);
+    /* Futuristic Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(200 95% 65%) 0%, hsl(180 85% 75%) 50%, hsl(200 95% 75%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(180 45% 70%) 0%, hsl(200 65% 80%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(200 60% 96%) 50%, hsl(180 40% 97%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0 0% 100% / 0.7) 0%, hsla(0 0% 100% / 0.3) 100%);
+    --gradient-glow: radial-gradient(circle at 50% 50%, hsl(200 95% 75% / 0.3) 0%, transparent 70%);
     
-    /* Shadows */
-    --shadow-soft: 0 2px 20px -2px hsl(195 65% 55% / 0.08);
-    --shadow-medium: 0 8px 30px -4px hsl(195 65% 55% / 0.12);
-    --shadow-elegant: 0 20px 60px -10px hsl(195 65% 55% / 0.15);
+    /* Holographic Shadows */
+    --shadow-soft: 0 2px 30px -5px hsl(200 95% 65% / 0.1);
+    --shadow-medium: 0 10px 40px -5px hsl(200 95% 65% / 0.15);
+    --shadow-elegant: 0 25px 70px -15px hsl(200 95% 65% / 0.2);
+    --shadow-glow: 0 0 60px hsl(200 95% 75% / 0.4);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
     
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -131,44 +136,137 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  .hover-lift {
-    @apply transition-all duration-300 hover:translate-y-[-4px] hover:shadow-[var(--shadow-medium)];
+  /* Glassmorphism Effects */
+  .glass {
+    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-glass;
   }
   
-  .fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+  .glass-strong {
+    @apply bg-white/60 backdrop-blur-2xl border border-white/30 shadow-elegant;
   }
   
-  .slide-up {
-    animation: slideUp 0.6s ease-out forwards;
+  .glass-card {
+    @apply glass rounded-2xl p-6 transition-all duration-500;
   }
   
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+  /* Magnetic Hover Effects */
+  .magnetic-hover {
+    @apply transition-all duration-500 hover:translate-y-[-8px] hover:shadow-glow;
+  }
+  
+  .tilt-hover {
+    @apply transition-transform duration-300 hover:scale-105;
+    transform-style: preserve-3d;
+  }
+  
+  /* Glow Effects */
+  .glow {
+    @apply shadow-glow;
+  }
+  
+  .glow-on-hover {
+    @apply transition-shadow duration-500 hover:shadow-glow;
+  }
+  
+  /* Floating Animation */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0%, 100% {
+      transform: translateY(0px);
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    50% {
+      transform: translateY(-20px);
     }
   }
   
-  @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
+  /* Pulse Glow Animation */
+  .pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(200 95% 75% / 0.3);
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    50% {
+      box-shadow: 0 0 40px hsl(200 95% 75% / 0.6);
     }
   }
   
+  /* Gradient Text */
   .gradient-text {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+  
+  @keyframes shimmer {
+    to {
+      background-position: 200% center;
+    }
+  }
+  
+  /* Fade Animations */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Parallax Container */
+  .parallax-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Light Streak Effect */
+  .light-streak {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .light-streak::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: streak 3s infinite;
+  }
+  
+  @keyframes streak {
+    to {
+      left: 100%;
+    }
   }
 }

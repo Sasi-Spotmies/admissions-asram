@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
   Heart, 
@@ -10,9 +9,9 @@ import {
   Syringe,
   Activity,
   Microscope,
-  Pill,
   HeartPulse,
-  UserRound
+  UserRound,
+  ArrowRight
 } from "lucide-react";
 
 const departments = [
@@ -30,48 +29,72 @@ const departments = [
   { name: "Dermatology", icon: HeartPulse, seats: 4 },
 ];
 
+const DepartmentCard = ({ name, icon: Icon, seats }: { name: string; icon: any; seats: number }) => (
+  <div className="glass-card magnetic-hover group cursor-pointer">
+    <div className="relative">
+      {/* Icon Container */}
+      <div className="glass rounded-xl p-4 inline-block mb-6 group-hover:scale-110 transition-transform duration-500">
+        <Icon className="w-10 h-10 text-primary" />
+      </div>
+      
+      {/* Content */}
+      <h3 className="text-2xl font-bold mb-3 font-display group-hover:text-primary transition-colors">
+        {name}
+      </h3>
+      <p className="text-muted-foreground mb-6 flex items-center gap-2">
+        <span className="w-2 h-2 rounded-full bg-primary pulse-glow"></span>
+        {seats} Seats Available
+      </p>
+      
+      {/* Learn More Link */}
+      <div className="flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+        <span className="text-sm">Learn More</span>
+        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </div>
+    </div>
+  </div>
+);
+
 export const Departments = () => {
   return (
-    <section id="departments" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-poppins gradient-text">
-            Explore Departments
+    <section id="departments" className="py-32 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: 'radial-gradient(circle at 2px 2px, hsl(200 95% 65%) 1px, transparent 0)',
+        backgroundSize: '40px 40px',
+      }} />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-20 fade-in-up">
+          <div className="inline-block glass rounded-full px-6 py-2 mb-6">
+            <span className="text-sm font-medium text-primary">Specializations</span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 font-display">
+            Explore Our <span className="gradient-text">Programs</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose from 15+ specializations across Pre-Clinical, Para-Clinical, and Clinical streams
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Choose from our comprehensive range of specialized medical programs, 
+            each meticulously designed to shape leaders in healthcare.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
           {departments.map((dept, index) => (
-            <Card
-              key={index}
-              className="group relative overflow-hidden bg-card hover:bg-gradient-to-br hover:from-primary-light/10 hover:to-secondary-light/10 border-border hover:border-primary/30 transition-all duration-300 hover-lift cursor-pointer"
+            <div 
+              key={dept.name} 
+              className="fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="p-6">
-                <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <dept.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors">
-                  {dept.name}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {dept.seats} seats available
-                </p>
-              </div>
-              
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-            </Card>
+              <DepartmentCard {...dept} />
+            </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        {/* CTA */}
+        <div className="text-center">
           <Button 
-            variant="outline" 
             size="lg"
-            className="border-2 border-primary hover:bg-primary/10"
+            className="glass-strong border-2 border-primary/20 text-primary hover:bg-primary hover:text-white glow-on-hover px-10 py-7 text-lg font-medium rounded-2xl transition-all duration-500"
           >
             View Complete Seat Matrix
           </Button>
