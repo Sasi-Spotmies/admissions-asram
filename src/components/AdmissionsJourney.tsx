@@ -1,72 +1,104 @@
 import { CheckCircle2, FileText, UserCheck, CreditCard } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const steps = [
   {
     icon: CheckCircle2,
     title: "Check NEET-PG Eligibility",
-    description: "Ensure you meet the basic eligibility criteria and have a valid NEET-PG score",
+    description:
+      "Ensure you meet the basic eligibility criteria and have a valid NEET-PG score",
   },
   {
     icon: FileText,
     title: "Participate in Counseling",
-    description: "Register for Dr. NTRUHS counseling and submit your preferred choices",
+    description:
+      "Register for Dr. NTRUHS counseling and submit your preferred choices",
   },
   {
     icon: UserCheck,
     title: "Document Verification",
-    description: "Attend verification with original certificates and receive seat allotment",
+    description:
+      "Attend verification with original certificates and receive seat allotment",
   },
   {
     icon: CreditCard,
     title: "Pay Fees & Confirm",
-    description: "Complete fee payment within the deadline to secure your admission",
+    description:
+      "Complete fee payment within the deadline to secure your admission",
   },
 ];
 
-export const AdmissionsJourney = () => {
+export function AdmissionsJourney() {
+  const navigate = useNavigate(); // ✅ Correct hook for navigation
+
   return (
-    <section id="eligibility" className="py-24 bg-gradient-to-br from-secondary-light/20 to-primary-light/20">
-      <div className="container mx-auto px-4">
+    <section
+      id="eligibility"
+      className="relative py-28 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 overflow-hidden"
+    >
+      {/* Subtle background grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[.8]"
+        aria-hidden
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(59, 130, 246, 0.10) 1px, transparent 1px), linear-gradient(to bottom, rgba(59, 130, 246, 0.10) 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
+          }}
+        />
+      </div>
+
+      {/* Soft top vignette */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-100/40 to-transparent"
+        aria-hidden
+      />
+
+      <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 font-poppins">
-            Your Admissions Journey
+          <h2 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight">
+            <span className="text-slate-900 font-serif">
+              Your Admissions Journey
+            </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A simplified roadmap to your medical future
+          <div className="w-24 h-0.5 bg-blue-600/60 rounded mx-auto mb-6" />
+          <p className="text-lg text-slate-700 max-w-2xl mx-auto">
+            A precise, professional roadmap to secure your PG seat
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative">
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="relative"
-                style={{
-                  animation: `fade-in 0.6s ease-out ${index * 150}ms both`,
-                }}
+                data-reveal-item
+                className="relative transition-transform duration-300 ease-out hover:-translate-y-1"
               >
-                {/* Connector Line (hidden on mobile, shown on larger screens) */}
+                {/* Connector Line (desktop) */}
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-primary to-secondary z-0">
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-primary animate-pulse" />
-                  </div>
+                  <div className="hidden lg:block absolute top-14 left-[62%] w-[82%] h-px bg-gradient-to-r from-blue-400/70 via-blue-300/30 to-transparent z-0" />
                 )}
 
-                <div className="relative z-10 bg-card rounded-2xl p-6 shadow-soft hover-lift h-full">
-                  {/* Step Number */}
-                  <div className="absolute -top-3 -left-3 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-sm shadow-lg">
-                    {index + 1}
+                <div className="relative z-10 rounded-2xl p-6 h-full bg-white border border-blue-200 hover:border-blue-600/40 transition-colors shadow-[0_12px_28px_-14px_rgba(37,99,235,0.35)]">
+                  {/* Step Badge */}
+                  <div className="absolute -top-3 -left-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold tracking-wide text-blue-900 bg-blue-100 border border-blue-200 shadow-sm">
+                    STEP {index + 1}
                   </div>
 
                   {/* Icon */}
-                  <div className="mb-4 inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10">
-                    <step.icon className="w-8 h-8 text-primary" />
+                  <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-blue-50 ring-1 ring-blue-200">
+                    <step.icon className="w-7 h-7 text-blue-600" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <h3 className="text-lg font-semibold mb-2 tracking-tight text-slate-900">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -74,7 +106,18 @@ export const AdmissionsJourney = () => {
             ))}
           </div>
         </div>
+
+        {/* CTA Button */}
+        <div className="mt-16 text-center">
+        <button
+        onClick={() => window.open("https://login.orfus.in/", "_blank")} // ✅ opens in new tab
+        className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 border border-blue-600/70 shadow-[0_10px_26px_-14px_rgba(37,99,235,0.55)] transition-transform duration-300 hover:scale-105 cursor-pointer"
+      >
+        Take Admission Now
+      </button>
+      
+        </div>
       </div>
     </section>
   );
-};
+}

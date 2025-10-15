@@ -2,7 +2,7 @@ import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram } from "luc
 
 export const Footer = () => {
   return (
-    <footer className="bg-foreground/5 border-t border-border">
+    <footer id="contact" className="bg-gray-100 border-t border-border">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About */}
@@ -32,7 +32,7 @@ export const Footer = () => {
             <h3 className="text-lg font-bold mb-4 font-poppins">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="#about" className="text-muted-foreground hover:text-primary transition-colors">
                   Home
                 </a>
               </li>
@@ -43,11 +43,11 @@ export const Footer = () => {
               </li>
               <li>
                 <a href="#eligibility" className="text-muted-foreground hover:text-primary transition-colors">
-                  Admissions
+                  Eligibility
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact Us
                 </a>
               </li>

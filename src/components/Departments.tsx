@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { 
   Heart, 
   Brain, 
@@ -11,7 +10,6 @@ import {
   Microscope,
   HeartPulse,
   UserRound,
-  ArrowRight
 } from "lucide-react";
 
 const departments = [
@@ -29,27 +27,21 @@ const departments = [
   { name: "Dermatology", icon: HeartPulse, seats: 4 },
 ];
 
-const DepartmentCard = ({ name, icon: Icon, seats }: { name: string; icon: any; seats: number }) => (
-  <div className="glass-card magnetic-hover group cursor-pointer">
-    <div className="relative">
-      {/* Icon Container */}
-      <div className="glass rounded-xl p-4 inline-block mb-6 group-hover:scale-110 transition-transform duration-500">
-        <Icon className="w-10 h-10 text-primary" />
-      </div>
-      
-      {/* Content */}
-      <h3 className="text-2xl font-bold mb-3 font-display group-hover:text-primary transition-colors">
-        {name}
-      </h3>
-      <p className="text-muted-foreground mb-6 flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-primary pulse-glow"></span>
-        {seats} Seats Available
-      </p>
-      
-      {/* Learn More Link */}
-      <div className="flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-        <span className="text-sm">Learn More</span>
-        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+const DepartmentCard = ({ name, icon: Icon, seats, variant = false }: { name: string; icon: any; seats: number; variant?: boolean }) => (
+  <div className="group cursor-pointer rounded-xl bg-white/80 backdrop-blur-sm border border-gray-200/80 shadow-sm hover:shadow-md transition-colors duration-200">
+    <div className="relative rounded-xl">
+      {/* Subtle, professional surface */}
+      <div className={`relative rounded-[0.9rem] p-4 ${variant ? 'bg-white' : 'bg-white'}`}>
+        {/* Compact horizontal header */}
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-base font-semibold text-gray-900 tracking-tight group-hover:text-blue-700 transition-colors">
+            {name}
+          </h3>
+          <div className="w-9 h-9 rounded-lg bg-gray-50 border border-gray-200 text-blue-700 flex items-center justify-center">
+            <Icon className="w-5 h-5" />
+          </div>
+        </div>
+        {/* Footer tag removed */}
       </div>
     </div>
   </div>
@@ -57,47 +49,28 @@ const DepartmentCard = ({ name, icon: Icon, seats }: { name: string; icon: any; 
 
 export const Departments = () => {
   return (
-    <section id="departments" className="py-32 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: 'radial-gradient(circle at 2px 2px, hsl(200 95% 65%) 1px, transparent 0)',
-        backgroundSize: '40px 40px',
-      }} />
-      
+    <section id="departments" className="py-14 relative overflow-hidden bg-gray-50">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-20 fade-in-up">
-          <div className="inline-block glass rounded-full px-6 py-2 mb-6">
-            <span className="text-sm font-medium text-primary">Specializations</span>
+        {/* Page card wrapper */}
+        <div className="mx-auto max-w-6xl rounded-3xl p-8 md:p-10 lg:p-12 shadow-lg border border-gray-200 bg-gradient-to-br from-yellow-50 via-white to-yellow-50/60">
+          <div className="mb-6 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold font-serif text-gray-900">Explore Our Programs</h2>
+            <p className="mt-2 text-base md:text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Choose from our specialized medical programs crafted to elevate your postgraduate journey.
+            </p>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 font-display">
-            Explore Our <span className="gradient-text">Programs</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Choose from our comprehensive range of specialized medical programs, 
-            each meticulously designed to shape leaders in healthcare.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
-          {departments.map((dept, index) => (
-            <div 
-              key={dept.name} 
-              className="fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <DepartmentCard {...dept} />
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <Button 
-            size="lg"
-            className="glass-strong border-2 border-primary/20 text-primary hover:bg-primary hover:text-white glow-on-hover px-10 py-7 text-lg font-medium rounded-2xl transition-all duration-500"
-          >
-            View Complete Seat Matrix
-          </Button>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {departments.map((dept, index) => (
+              <div 
+                key={dept.name}
+                data-reveal-item
+                className="fade-in-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <DepartmentCard {...dept} variant={index % 2 === 1} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
