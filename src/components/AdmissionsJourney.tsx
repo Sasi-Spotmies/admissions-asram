@@ -34,26 +34,65 @@ export function AdmissionsJourney() {
   return (
     <section
       id="eligibility"
-      className="relative py-28 bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 overflow-hidden"
+      className="relative py-28 bg-gradient-to-br from-slate-50 via-sky-50 to-slate-100 overflow-hidden"
     >
       {/* Subtle background grid */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[.8]"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      aria-hidden
+    >
+      {/* Animated Grid Lines */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(59,130,246,0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(59,130,246,0.08) 1px, transparent 1px)
+          `,
+          backgroundSize: "44px 44px",
+          maskImage: "radial-gradient(circle at center, white 60%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(circle at center, white 60%, transparent 100%)",
+          transform: "translateZ(0)",
+          animation: "gridShift 20s linear infinite",
+        }}
+      />
+    
+      {/* Glowing Dots at Intersections */}
+      <div
+        className="absolute inset-0 bg-[radial-gradient(circle,rgba(59,130,246,0.25)_1px,transparent_1px)]"
+        style={{
+          backgroundSize: "44px 44px",
+          filter: "blur(0.5px)",
+          opacity: 0.4,
+          animation: "gridGlow 6s ease-in-out infinite alternate",
+        }}
+      />
+    
+      {/* Subtle Flowing Gradient Overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            radial-gradient(ellipse at 20% 30%, rgba(99,102,241,0.15), transparent 70%),
+            radial-gradient(ellipse at 80% 70%, rgba(59,130,246,0.12), transparent 70%)
+          `,
+          mixBlendMode: "soft-light",
+          animation: "flowShift 30s ease-in-out infinite alternate",
+        }}
+      />
+    </div>
+    
+
+      {/* Bottom-to-top red background layer */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-sky-200/40 via-red-500/10 to-transparent"
         aria-hidden
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(59, 130, 246, 0.10) 1px, transparent 1px), linear-gradient(to bottom, rgba(59, 130, 246, 0.10) 1px, transparent 1px)",
-            backgroundSize: "44px 44px",
-          }}
-        />
-      </div>
+      />
 
       {/* Soft top vignette */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-blue-100/40 to-transparent"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-sky-100/40 to-transparent"
         aria-hidden
       />
 
@@ -64,7 +103,7 @@ export function AdmissionsJourney() {
               Your Admissions Journey
             </span>
           </h2>
-          <div className="w-24 h-0.5 bg-blue-600/60 rounded mx-auto mb-6" />
+          <div className="w-24 h-0.5 bg-sky-600/60 rounded mx-auto mb-6" />
           <p className="text-lg text-slate-700 max-w-2xl mx-auto">
             A precise, professional roadmap to secure your PG seat
           </p>
@@ -80,18 +119,18 @@ export function AdmissionsJourney() {
               >
                 {/* Connector Line (desktop) */}
                 {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-14 left-[62%] w-[82%] h-px bg-gradient-to-r from-blue-400/70 via-blue-300/30 to-transparent z-0" />
+                  <div className="hidden lg:block absolute top-14 left-[62%] w-[82%] h-px bg-gradient-to-r from-sky-400/70 via-sky-300/30 to-transparent z-0" />
                 )}
 
-                <div className="relative z-10 rounded-2xl p-6 h-full bg-white border border-blue-200 hover:border-blue-600/40 transition-colors shadow-[0_12px_28px_-14px_rgba(37,99,235,0.35)]">
+                <div className="relative z-10 rounded-2xl p-6 h-full bg-white border border-sky-200 hover:border-sky-600/40 transition-colors shadow-[0_12px_28px_-14px_rgba(37,99,235,0.35)]">
                   {/* Step Badge */}
-                  <div className="absolute -top-3 -left-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold tracking-wide text-blue-900 bg-blue-100 border border-blue-200 shadow-sm">
+                  <div className="absolute -top-3 -left-3 inline-flex items-center rounded-full px-3 py-1 text-[10px] font-semibold tracking-wide text-sky-900 bg-sky-100 border border-sky-200 shadow-sm">
                     STEP {index + 1}
                   </div>
 
                   {/* Icon */}
-                  <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-blue-50 ring-1 ring-blue-200">
-                    <step.icon className="w-7 h-7 text-blue-600" />
+                  <div className="mb-4 inline-flex items-center justify-center w-14 h-14 rounded-lg bg-sky-50 ring-1 ring-sky-200">
+                    <step.icon className="w-7 h-7 text-sky-600" />
                   </div>
 
                   {/* Content */}
@@ -111,7 +150,7 @@ export function AdmissionsJourney() {
         <div className="mt-16 text-center">
         <button
         onClick={() => window.open("https://login.orfus.in/", "_blank")} // ✅ opens in new tab
-        className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 border border-blue-600/70 shadow-[0_10px_26px_-14px_rgba(37,99,235,0.55)] transition-transform duration-300 hover:scale-105 cursor-pointer"
+        className="inline-flex items-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold text-white bg-sky-600 hover:bg-sky-700 border border-sky-600/70 shadow-[0_10px_26px_-14px_rgba(37,99,235,0.55)] transition-transform duration-300 hover:scale-105 cursor-pointer"
       >
         Take Admission Now
       </button>
