@@ -46,7 +46,7 @@ const hostel = [
 
 function PremiumTable({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="border border-amber-200 shadow-soft overflow-hidden bg-gradient-to-br from-white via-yellow-50/30 to-white">
+    <Card className="border border- shadow-soft overflow-hidden bg-gradient-to-br from-white via-amber-50/30 to-white">
       <div className="overflow-x-auto">
         {children}
       </div>
@@ -64,7 +64,7 @@ export const FeeCalculator = () => {
         </div>
 
         <Tabs defaultValue="matrix" className="max-w-6xl mx-auto">
-          <TabsList className="grid grid-cols-5 bg-white/80 backdrop-blur border border-amber-200" data-reveal-item>
+          <TabsList className="grid grid-cols-5 bg-white/80 backdrop-blur border border-amber-100" data-reveal-item>
             <TabsTrigger value="matrix">Seat Matrix</TabsTrigger>
             <TabsTrigger value="cq">Convener</TabsTrigger>
             <TabsTrigger value="s1">S1</TabsTrigger>

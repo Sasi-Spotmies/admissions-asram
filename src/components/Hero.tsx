@@ -30,41 +30,17 @@ export const Hero = () => {
     <div className="min-h-screen bg-transparent pt-10 relative overflow-hidden">
       {/* Background Image (behind content, above container background) */}
       <div className="absolute inset-0 z-0">
-        <img src={heroBg} alt="Medical campus background" className="w-full h-full object-cover opacity-100 filter grayscale" />
+        <img src={heroBg} alt="Medical campus background" className="w-full h-full object-cover opacity-100 filter " />
       </div>
       {/* Dark overlay to improve text contrast */}
       {/* Bottom to Middle Gradient Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" style={{ height: '100%' }}></div>
+      <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-zinc-800 via-transparent to-zinc-800/50 pointer-events-none" style={{ height: '100%' }}></div>
       {/* Background Blobs */}
       <div className="absolute inset-0 overflow-hidden">
         {/* Subtle Orbs */}
-        <div 
-          className="absolute   w-[400px] h-[400px] rounded-full bg-gradient-to-r from-blue-100/30 to-indigo-100/30 blur-3xl"
-          style={{
-            top: '8%',
-            left: '8%',
-            transform: `translate(${mousePosition.x * 0.15}px, ${mousePosition.y * 0.15}px)`,
-            transition: 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-        />
-        <div 
-          className="absolute w-[350px] h-[350px] rounded-full bg-gradient-to-r from-slate-100/25 to-gray-100/25 blur-3xl"
-          style={{
-            bottom: '15%',
-            right: '15%',
-            transform: `translate(${-mousePosition.x * 0.12}px, ${-mousePosition.y * 0.12}px)`,
-            transition: 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-        />
-        <div 
-          className="absolute w-[300px] h-[300px] rounded-full bg-gradient-to-r from-blue-50/40 to-indigo-50/40 blur-3xl"
-          style={{
-            top: '45%',
-            right: '30%',
-            transform: `translate(${mousePosition.x * 0.08}px, ${mousePosition.y * 0.08}px)`,
-            transition: 'transform 1.5s cubic-bezier(0.4, 0, 0.2, 1)',
-          }}
-        />
+        
+       
+     
         <div 
           className="absolute w-[250px] h-[250px] rounded-full bg-gradient-to-r from-gray-100/20 to-slate-100/20 blur-3xl"
           style={{
